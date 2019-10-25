@@ -13,5 +13,6 @@ namespace todolist
 	/// </summary>
 	public partial class App : Application
 	{
+		
 	}
 }

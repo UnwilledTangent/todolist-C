@@ -26,7 +26,6 @@ namespace todolist
 		{
 			InitializeComponent();
 		}
-		
 
 		private void richTextBox1_TextChanged(object sender, TextChangedEventArgs e)
 		{
