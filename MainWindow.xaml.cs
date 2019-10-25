@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Drawing;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,13 +26,32 @@ namespace todolist
 		{
 			InitializeComponent();
 		}
+		
 
-		private void textBox_TextChanged(object sender, TextChangedEventArgs e)
+		private void richTextBox1_TextChanged(object sender, TextChangedEventArgs e)
 		{
 
 		}
 
-		private void textBox1_TextChanged(object sender, TextChangedEventArgs e)
+		private void buttonGetText_Click(object sender, RoutedEventArgs e)
+		{
+			TextRange textRange = new TextRange(richTextBox1.Document.ContentStart, richTextBox1.Document.ContentEnd);
+			MessageBox.Show(textRange.Text);
+		}
+
+
+		private void richTextBox2_TextChanged(object sender, TextChangedEventArgs e)
+		{
+
+		}
+
+		private void buttonSave_Click(object sender, RoutedEventArgs e)
+		{
+
+			MessageBox.Show("Saved", "My Title");
+		}
+
+		private void richTextBox3_TextChanged(object sender, TextChangedEventArgs e)
 		{
 
 		}

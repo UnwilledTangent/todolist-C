@@ -14,3 +14,4 @@ C:\Users\acer\source\repos\todolist\todolist\obj\Debug\netcoreapp3.0\todolist.As
 C:\Users\acer\source\repos\todolist\todolist\obj\Debug\netcoreapp3.0\todolist.AssemblyInfo.cs
 C:\Users\acer\source\repos\todolist\todolist\obj\Debug\netcoreapp3.0\todolist.dll
 C:\Users\acer\source\repos\todolist\todolist\obj\Debug\netcoreapp3.0\todolist.pdb
+C:\Users\acer\source\repos\todolist\todolist\obj\Debug\netcoreapp3.0\todolist.csprojAssemblyReference.cache
