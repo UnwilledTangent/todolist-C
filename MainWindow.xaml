@@ -27,7 +27,8 @@
 						</FlowDocument>
 					</RichTextBox>
 					<Button x:Name="buttonSave" Content="Save" HorizontalAlignment="Left" Margin="10,338,0,0" VerticalAlignment="Top" Height="40" Width="100" Click="buttonSave_Click" Grid.ColumnSpan="2"/>
-					<Button x:Name="buttonGetText" Content="Get Text" HorizontalAlignment="Left" Margin="26,338,0,0" VerticalAlignment="Top" Height="40" Width="100" Click="buttonGetText_Click" Grid.Column="1"/>
+					<Button x:Name="buttonGetText" Content="Get Text" HorizontalAlignment="Left" Margin="131,338,0,0" VerticalAlignment="Top" Height="40" Width="100" Click="buttonGetText_Click" Grid.Column="1"/>
+					<Button x:Name="loadButton" Content="Load" Grid.Column="1" HorizontalAlignment="Left" Margin="26,338,0,0" VerticalAlignment="Top" Width="100" Height="40" Click="loadButton_Click"/>
 				</Grid>
 			</TabItem>
 			<TabItem Header="Doing (Today)">

@@ -47,13 +47,42 @@ namespace todolist
 
 		private void buttonSave_Click(object sender, RoutedEventArgs e)
 		{
+			SaveXamlPackage("toDo.xaml");
 
 			MessageBox.Show("Saved", "My Title");
+		}
+
+		void SaveXamlPackage(string _fileName)
+		{
+			TextRange range;
+			FileStream fStream;
+			range = new TextRange(richTextBox1.Document.ContentStart, richTextBox1.Document.ContentEnd);
+			fStream = new FileStream(_fileName, FileMode.Create);
+			range.Save(fStream, DataFormats.XamlPackage);
+			fStream.Close();
 		}
 
 		private void richTextBox3_TextChanged(object sender, TextChangedEventArgs e)
 		{
 
+		}
+
+		private void loadButton_Click(object sender, RoutedEventArgs e)
+		{
+			LoadXamlPackage("toDo.xaml");
+		}
+
+		void LoadXamlPackage(string _fileName)
+		{
+			TextRange range;
+			FileStream fStream;
+			if (File.Exists(_fileName))
+			{
+				range = new TextRange(richTextBox1.Document.ContentStart, richTextBox1.Document.ContentEnd);
+				fStream = new FileStream(_fileName, FileMode.OpenOrCreate);
+				range.Load(fStream, DataFormats.XamlPackage);
+				fStream.Close();
+			}
 		}
 	}
 }
