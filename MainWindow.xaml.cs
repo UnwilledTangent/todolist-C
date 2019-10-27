@@ -14,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace todolist
 {
@@ -46,9 +48,17 @@ namespace todolist
 
 		private void buttonSave_Click(object sender, RoutedEventArgs e)
 		{
-			saveAllXamlPackages();
-
-			MessageBox.Show("Saved", "Status");
+			TextRange range = new TextRange(richTextBox1.Document.ContentStart, richTextBox1.Document.ContentEnd);
+			int textLength = range.Text.Length;
+			if (textLength < 20)
+			{
+				MessageBox.Show("Error: String not more than 20 characters. toDo.xaml, doingToday.xaml and doing.xaml not saved.", "Save Status");
+			}
+			else
+			{
+				saveAllXamlPackages();
+				MessageBox.Show("Saved", "Status");
+			}
 		}
 
 		void saveAllXamlPackages()
@@ -63,7 +73,6 @@ namespace todolist
 			TextRange range;
 			FileStream fStream;
 			range = new TextRange(richTextBox1.Document.ContentStart, richTextBox1.Document.ContentEnd);
-
 			fStream = new FileStream(_fileName, FileMode.Create);
 			range.Save(fStream, DataFormats.XamlPackage);
 			fStream.Close();
