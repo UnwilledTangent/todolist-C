@@ -46,16 +46,44 @@ namespace todolist
 
 		private void buttonSave_Click(object sender, RoutedEventArgs e)
 		{
-			SaveXamlPackage("toDo.xaml");
+			saveAllXamlPackages();
 
-			MessageBox.Show("Saved", "My Title");
+			MessageBox.Show("Saved", "Status");
 		}
 
-		void SaveXamlPackage(string _fileName)
+		void saveAllXamlPackages()
+		{
+			SaveXamlPackage1("toDo.xaml");
+			SaveXamlPackage2("doingToday.xaml");
+			SaveXamlPackage3("doing.xaml");
+		}
+
+		void SaveXamlPackage1(string _fileName)
 		{
 			TextRange range;
 			FileStream fStream;
 			range = new TextRange(richTextBox1.Document.ContentStart, richTextBox1.Document.ContentEnd);
+
+			fStream = new FileStream(_fileName, FileMode.Create);
+			range.Save(fStream, DataFormats.XamlPackage);
+			fStream.Close();
+		}
+
+		void SaveXamlPackage2(string _fileName)
+		{
+			TextRange range;
+			FileStream fStream;
+			range = new TextRange(richTextBox2.Document.ContentStart, richTextBox2.Document.ContentEnd);
+			fStream = new FileStream(_fileName, FileMode.Create);
+			range.Save(fStream, DataFormats.XamlPackage);
+			fStream.Close();
+		}
+
+		void SaveXamlPackage3(string _fileName)
+		{
+			TextRange range;
+			FileStream fStream;
+			range = new TextRange(richTextBox3.Document.ContentStart, richTextBox3.Document.ContentEnd);
 			fStream = new FileStream(_fileName, FileMode.Create);
 			range.Save(fStream, DataFormats.XamlPackage);
 			fStream.Close();
@@ -68,16 +96,49 @@ namespace todolist
 
 		private void loadButton_Click(object sender, RoutedEventArgs e)
 		{
-			LoadXamlPackage("toDo.xaml");
+			loadAllXamlPackages();
 		}
 
-		void LoadXamlPackage(string _fileName)
+		void loadAllXamlPackages()
+		{
+			LoadXamlPackage1("toDo.xaml");
+			LoadXamlPackage2("doingToday.xaml");
+			LoadXamlPackage3("doing.xaml");
+		}
+
+		void LoadXamlPackage1(string _fileName)
 		{
 			TextRange range;
 			FileStream fStream;
 			if (File.Exists(_fileName))
 			{
 				range = new TextRange(richTextBox1.Document.ContentStart, richTextBox1.Document.ContentEnd);
+				fStream = new FileStream(_fileName, FileMode.OpenOrCreate);
+				range.Load(fStream, DataFormats.XamlPackage);
+				fStream.Close();
+			}
+		}
+
+		void LoadXamlPackage2(string _fileName)
+		{
+			TextRange range;
+			FileStream fStream;
+			if (File.Exists(_fileName))
+			{
+				range = new TextRange(richTextBox2.Document.ContentStart, richTextBox2.Document.ContentEnd);
+				fStream = new FileStream(_fileName, FileMode.OpenOrCreate);
+				range.Load(fStream, DataFormats.XamlPackage);
+				fStream.Close();
+			}
+		}
+
+		void LoadXamlPackage3(string _fileName)
+		{
+			TextRange range;
+			FileStream fStream;
+			if (File.Exists(_fileName))
+			{
+				range = new TextRange(richTextBox3.Document.ContentStart, richTextBox3.Document.ContentEnd);
 				fStream = new FileStream(_fileName, FileMode.OpenOrCreate);
 				range.Load(fStream, DataFormats.XamlPackage);
 				fStream.Close();
