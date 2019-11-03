@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.0": []
   },
   "packageFolders": {
-    "C:\\Users\\acer\\.nuget\\packages\\": {}
+    "C:\\Users\\acer.000\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\acer\\source\\repos\\todolist\\todolist\\todolist.csproj",
+      "projectUniqueName": "C:\\Users\\acer.000\\source\\repos\\todolist\\todolist\\todolist.csproj",
       "projectName": "todolist",
-      "projectPath": "C:\\Users\\acer\\source\\repos\\todolist\\todolist\\todolist.csproj",
-      "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\acer\\source\\repos\\todolist\\todolist\\obj\\",
+      "projectPath": "C:\\Users\\acer.000\\source\\repos\\todolist\\todolist\\todolist.csproj",
+      "packagesPath": "C:\\Users\\acer.000\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\acer.000\\source\\repos\\todolist\\todolist\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\acer.000\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

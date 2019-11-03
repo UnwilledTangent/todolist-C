@@ -36,6 +36,7 @@ namespace todolist
 
 		private void buttonGetText_Click(object sender, RoutedEventArgs e)
 		{
+			// just get the text of toDo.xaml and show in a MessageBox
 			TextRange textRange = new TextRange(richTextBox1.Document.ContentStart, richTextBox1.Document.ContentEnd);
 			MessageBox.Show(textRange.Text);
 		}
@@ -48,6 +49,7 @@ namespace todolist
 
 		private void buttonSave_Click(object sender, RoutedEventArgs e)
 		{
+			// check if toDo.xaml has more than 20 characters, than saveAllXamlPackages();
 			TextRange range = new TextRange(richTextBox1.Document.ContentStart, richTextBox1.Document.ContentEnd);
 			int textLength = range.Text.Length;
 			if (textLength < 20)
@@ -70,6 +72,7 @@ namespace todolist
 
 		void SaveXamlPackage1(string _fileName)
 		{
+			// save toDo.xaml into bin
 			TextRange range;
 			FileStream fStream;
 			range = new TextRange(richTextBox1.Document.ContentStart, richTextBox1.Document.ContentEnd);
@@ -80,6 +83,7 @@ namespace todolist
 
 		void SaveXamlPackage2(string _fileName)
 		{
+			// save doingToday.xaml into bin
 			TextRange range;
 			FileStream fStream;
 			range = new TextRange(richTextBox2.Document.ContentStart, richTextBox2.Document.ContentEnd);
@@ -90,6 +94,7 @@ namespace todolist
 
 		void SaveXamlPackage3(string _fileName)
 		{
+			// save doing.xaml into bin
 			TextRange range;
 			FileStream fStream;
 			range = new TextRange(richTextBox3.Document.ContentStart, richTextBox3.Document.ContentEnd);
@@ -117,6 +122,7 @@ namespace todolist
 
 		void LoadXamlPackage1(string _fileName)
 		{
+			// load toDo.xaml file from bin to app
 			TextRange range;
 			FileStream fStream;
 			if (File.Exists(_fileName))
@@ -130,6 +136,7 @@ namespace todolist
 
 		void LoadXamlPackage2(string _fileName)
 		{
+			// load doingToday.xaml file from bin to app
 			TextRange range;
 			FileStream fStream;
 			if (File.Exists(_fileName))
@@ -143,6 +150,7 @@ namespace todolist
 
 		void LoadXamlPackage3(string _fileName)
 		{
+			// load doing.xaml file from bin to app
 			TextRange range;
 			FileStream fStream;
 			if (File.Exists(_fileName))
