@@ -65,9 +65,9 @@ namespace todolist
 
 		void saveAllXamlPackages()
 		{
-			SaveXamlPackage1("toDo.xaml");
-			SaveXamlPackage2("doingToday.xaml");
-			SaveXamlPackage3("doing.xaml");
+			SaveXamlPackage1("C:\\Test\\toDo.xaml");
+			SaveXamlPackage2("C:\\Test\\doingToday.xaml");
+			SaveXamlPackage3("C:\\Test\\doing.xaml");
 		}
 
 		void SaveXamlPackage1(string _fileName)
@@ -115,9 +115,9 @@ namespace todolist
 
 		void loadAllXamlPackages()
 		{
-			LoadXamlPackage1("toDo.xaml");
-			LoadXamlPackage2("doingToday.xaml");
-			LoadXamlPackage3("doing.xaml");
+			LoadXamlPackage1("C:\\Test\\toDo.xaml");
+			LoadXamlPackage2("C:\\Test\\doingToday.xaml");
+			LoadXamlPackage3("C:\\Test\\doing.xaml");
 		}
 
 		void LoadXamlPackage1(string _fileName)
