@@ -79,12 +79,12 @@ namespace todolist
 			int textLength = range.Text.Length;
 			if (textLength < 20)
 			{
-				MessageBox.Show("Error: String not more than 20 characters. toDo.xaml, doingToday.xaml and doing.xaml not saved.", "Save Status");
+				MessageBox.Show("Error: String not more than 20 characters. toDo.xaml, doingToday.xaml and doing.xaml not pushed.", "Push Status");
 			}
 			else
 			{
 				saveAllXamlPackages();
-				MessageBox.Show("Pushed", "Status");
+				MessageBox.Show("Pushed", "Push Status");
 			}
 		}
 
@@ -169,7 +169,11 @@ namespace todolist
 
 		void LoadXamlPackage1(string _fileName)
 		{
-			// load toDo.xaml file from bin to app
+			// download toDo.xaml file from Azure to C:\\Test\\toDo.xaml
+			CloudFile file = sampleDir.GetFileReference("toDo.xaml");
+			file.DownloadToFile(_fileName, System.IO.FileMode.OpenOrCreate);
+
+			// load toDo.xaml file from C:\\Test\\toDo.xaml to app
 			TextRange range;
 			FileStream fStream;
 			if (File.Exists(_fileName))
@@ -183,7 +187,11 @@ namespace todolist
 
 		void LoadXamlPackage2(string _fileName)
 		{
-			// load doingToday.xaml file from bin to app
+			// download doingToday.xaml file from Azure to C:\\Test\\doingToday.xaml
+			CloudFile file = sampleDir.GetFileReference("doingToday.xaml");
+			file.DownloadToFile(_fileName, System.IO.FileMode.OpenOrCreate);
+
+			// load doingToday.xaml file from C:\\Test\\toDo.xaml to app
 			TextRange range;
 			FileStream fStream;
 			if (File.Exists(_fileName))
@@ -197,7 +205,11 @@ namespace todolist
 
 		void LoadXamlPackage3(string _fileName)
 		{
-			// load doing.xaml file from bin to app
+			// download doing.xaml file from Azure to C:\\Test\\doing.xaml
+			CloudFile file = sampleDir.GetFileReference("doing.xaml");
+			file.DownloadToFile(_fileName, System.IO.FileMode.OpenOrCreate);
+
+			// load doing.xaml file from C:\\Test\\doing.xaml to app
 			TextRange range;
 			FileStream fStream;
 			if (File.Exists(_fileName))
