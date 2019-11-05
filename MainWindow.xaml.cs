@@ -16,6 +16,10 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
+using Microsoft.Azure;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.File;
+using Microsoft.Azure.Storage.Auth;
 
 namespace todolist
 {
@@ -24,11 +28,32 @@ namespace todolist
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		// Parse the connection string, and return a reference to the storage account
+		// Remember to put static
+		//private static CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("7KNDbcUhOndKDKhcLzKOP78Ris7b0e7IUgB9OWzE+u75KL91xMElSl3o0SeLczLwP+juWPGNOSvacQGbkxomRw=="));\
+
+		// Creates storage credentials
+		private static StorageCredentials storageCredentials = new StorageCredentials("firstwebappstorage", "7KNDbcUhOndKDKhcLzKOP78Ris7b0e7IUgB9OWzE+u75KL91xMElSl3o0SeLczLwP+juWPGNOSvacQGbkxomRw==");
+
+		private static CloudStorageAccount storageAccount = new CloudStorageAccount(storageCredentials, true);
+
+		// Create a CloudFileClient object for credentialed access to Azure Files.
+		private static CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
+
+		// Get a reference to the file share we created previously.
+		private static CloudFileShare share = fileClient.GetShareReference("myshare");
+
+		// Get a reference to the root directory for the share
+		private static CloudFileDirectory rootDir = share.GetRootDirectoryReference();
+
+		// Get a reference to the directory we created previously
+		private static CloudFileDirectory sampleDir = rootDir.GetDirectoryReference("CustomLogs");
+
 		public MainWindow()
 		{
 			InitializeComponent();
 		}
-
+		
 		private void richTextBox1_TextChanged(object sender, TextChangedEventArgs e)
 		{
 
@@ -59,10 +84,11 @@ namespace todolist
 			else
 			{
 				saveAllXamlPackages();
-				MessageBox.Show("Saved", "Status");
+				MessageBox.Show("Pushed", "Status");
 			}
 		}
 
+		// Push xaml files to cloud
 		void saveAllXamlPackages()
 		{
 			SaveXamlPackage1("C:\\Test\\toDo.xaml");
@@ -72,35 +98,56 @@ namespace todolist
 
 		void SaveXamlPackage1(string _fileName)
 		{
-			// save toDo.xaml into bin
+			// save toDo.xaml into C:\\Test\\toDo.xaml
 			TextRange range;
 			FileStream fStream;
 			range = new TextRange(richTextBox1.Document.ContentStart, richTextBox1.Document.ContentEnd);
 			fStream = new FileStream(_fileName, FileMode.Create);
 			range.Save(fStream, DataFormats.XamlPackage);
 			fStream.Close();
+
+			CloudFile file = sampleDir.GetFileReference("toDo.xaml");
+			Stream fileStream = File.OpenRead(_fileName);
+
+			// Upload file to Azure
+			file.UploadFromStream(fileStream);
+			fileStream.Dispose();
 		}
 
 		void SaveXamlPackage2(string _fileName)
 		{
-			// save doingToday.xaml into bin
+			// save doingToday.xaml into C:\\Test\\doingToday.xaml
 			TextRange range;
 			FileStream fStream;
 			range = new TextRange(richTextBox2.Document.ContentStart, richTextBox2.Document.ContentEnd);
 			fStream = new FileStream(_fileName, FileMode.Create);
 			range.Save(fStream, DataFormats.XamlPackage);
 			fStream.Close();
+
+			CloudFile file = sampleDir.GetFileReference("doingToday.xaml");
+			Stream fileStream = File.OpenRead(_fileName);
+
+			// Upload file to Azure
+			file.UploadFromStream(fileStream);
+			fileStream.Dispose();
 		}
 
 		void SaveXamlPackage3(string _fileName)
 		{
-			// save doing.xaml into bin
+			// save doing.xaml into C:\\Test\\doing.xaml
 			TextRange range;
 			FileStream fStream;
 			range = new TextRange(richTextBox3.Document.ContentStart, richTextBox3.Document.ContentEnd);
 			fStream = new FileStream(_fileName, FileMode.Create);
 			range.Save(fStream, DataFormats.XamlPackage);
 			fStream.Close();
+
+			CloudFile file = sampleDir.GetFileReference("doing.xaml");
+			Stream fileStream = File.OpenRead(_fileName);
+
+			// Upload file to Azure
+			file.UploadFromStream(fileStream);
+			fileStream.Dispose();
 		}
 
 		private void richTextBox3_TextChanged(object sender, TextChangedEventArgs e)

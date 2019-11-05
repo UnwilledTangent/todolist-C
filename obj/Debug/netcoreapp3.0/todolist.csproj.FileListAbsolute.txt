@@ -32,3 +32,9 @@ C:\Users\acer.000\source\repos\todolist\todolist\obj\Debug\netcoreapp3.0\todolis
 C:\Users\acer.000\source\repos\todolist\todolist\obj\Debug\netcoreapp3.0\todolist.AssemblyInfo.cs
 C:\Users\acer.000\source\repos\todolist\todolist\obj\Debug\netcoreapp3.0\todolist.dll
 C:\Users\acer.000\source\repos\todolist\todolist\obj\Debug\netcoreapp3.0\todolist.pdb
+C:\Users\acer.000\source\repos\todolist\todolist\obj\Debug\netcoreapp3.0\todolist.csproj.CopyComplete
+C:\Users\acer.000\source\repos\todolist\todolist\bin\Debug\netcoreapp3.0\Microsoft.Azure.KeyVault.Core.dll
+C:\Users\acer.000\source\repos\todolist\todolist\bin\Debug\netcoreapp3.0\Microsoft.Azure.Storage.Common.dll
+C:\Users\acer.000\source\repos\todolist\todolist\bin\Debug\netcoreapp3.0\Newtonsoft.Json.dll
+C:\Users\acer.000\source\repos\todolist\todolist\bin\Debug\netcoreapp3.0\Microsoft.Azure.Storage.File.dll
+C:\Users\acer.000\source\repos\todolist\todolist\bin\Debug\netcoreapp3.0\Microsoft.WindowsAzure.Configuration.dll
