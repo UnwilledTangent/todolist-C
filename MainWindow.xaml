@@ -1,20 +1,16 @@
 ﻿<Window x:Class="todolist.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:todolist"
-        mc:Ignorable="d"
-        Title="To-Do List" Height="450" Width="800">
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:todolist"
+		mc:Ignorable="d"
+		Title="To-Do List" Height="450" Width="800">
 	<Grid>
 		<TabControl x:Name="tabControl">
 			<TabItem Header="To-Do">
 				<Grid Background="#FFE5E5E5">
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="89*"/>
-						<ColumnDefinition Width="706*"/>
-					</Grid.ColumnDefinitions>
-					<RichTextBox x:Name="richTextBox1" Margin="10,10,10,50" TextChanged="richTextBox1_TextChanged" Grid.ColumnSpan="2">
+					<RichTextBox x:Name="richTextBox1" Margin="10,10,10.2,49.8" TextChanged="richTextBox1_TextChanged" Grid.ColumnSpan="2">
 						<RichTextBox.Resources>
 							<Style TargetType="{x:Type Paragraph}">
 								<Setter Property="Margin" Value="0" />
@@ -26,18 +22,12 @@
 							</Paragraph>
 						</FlowDocument>
 					</RichTextBox>
-					<Button x:Name="buttonSave" Content="Push" HorizontalAlignment="Left" Margin="10,0,0,5" VerticalAlignment="Bottom" Height="40" Width="100" Click="buttonSave_Click" Grid.ColumnSpan="2"/>
-					<Button x:Name="buttonGetText" Content="Get Text" HorizontalAlignment="Left" Margin="131,0,0,5" VerticalAlignment="Bottom" Height="40" Width="100" Click="buttonGetText_Click" Grid.Column="1"/>
-					<Button x:Name="loadButton" Content="Pull" Grid.Column="1" Margin="26,0,579,5" VerticalAlignment="Bottom" Height="40" Click="loadButton_Click"/>
+					<Button x:Name="buttonSave" Content="Push" HorizontalAlignment="Left" Margin="10,0,0,4.8" VerticalAlignment="Bottom" Height="40" Width="100" Click="buttonSave_Click"/>
+					<Button x:Name="loadButton" Content="Pull" Margin="115,0,0,4.8" VerticalAlignment="Bottom" Height="40" Click="loadButton_Click" HorizontalAlignment="Left" Width="100"/>
 				</Grid>
 			</TabItem>
 			<TabItem Header="Doing (Today)">
 				<Grid Background="#FFE5E5E5">
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="15*"/>
-						<ColumnDefinition Width="134*"/>
-						<ColumnDefinition Width="645*"/>
-					</Grid.ColumnDefinitions>
 					<RichTextBox x:Name="richTextBox2" Grid.ColumnSpan="3" Margin="10,10,10,50" TextChanged="richTextBox2_TextChanged">
 						<RichTextBox.Resources>
 							<Style TargetType="{x:Type Paragraph}">
@@ -51,16 +41,11 @@
 						</FlowDocument>
 					</RichTextBox>
 					<Button x:Name="buttonSave2" Content="Push" HorizontalAlignment="Left" Margin="10,0,0,5" Height="40" Width="100" VerticalAlignment="Bottom" Click="buttonSave_Click" Grid.ColumnSpan="2"/>
-					<Button x:Name="loadButton2" Content="Pull" Grid.Column="1" HorizontalAlignment="Left" Margin="100,0,0,5" VerticalAlignment="Bottom" Width="100" Height="40" Grid.ColumnSpan="2" Click="loadButton_Click"/>
+					<Button x:Name="loadButton2" Content="Pull" HorizontalAlignment="Left" Margin="115,0,0,4.8" VerticalAlignment="Bottom" Width="100" Height="40" Click="loadButton_Click"/>
 				</Grid>
 			</TabItem>
 			<TabItem Header="Doing">
 				<Grid Background="#FFE5E5E5">
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="13*"/>
-						<ColumnDefinition Width="26*"/>
-						<ColumnDefinition Width="358*"/>
-					</Grid.ColumnDefinitions>
 					<RichTextBox x:Name="richTextBox3" Grid.ColumnSpan="3" Margin="10,10,10,50" TextChanged="richTextBox3_TextChanged">
 						<RichTextBox.Resources>
 							<Style TargetType="{x:Type Paragraph}">
@@ -74,7 +59,25 @@
 						</FlowDocument>
 					</RichTextBox>
 					<Button x:Name="buttonSave3" Content="Push" HorizontalAlignment="Left" Margin="10,0,0,5" VerticalAlignment="Bottom" Height="40" Width="100" Click="buttonSave_Click" Grid.ColumnSpan="3"/>
-					<Button x:Name="loadButton3" Content="Pull" Grid.Column="2" HorizontalAlignment="Left" Margin="37,0,0,5" VerticalAlignment="Bottom" Width="100" Height="40" Click="loadButton_Click"/>
+					<Button x:Name="loadButton3" Content="Pull" HorizontalAlignment="Left" Margin="115,0,0,4.8" VerticalAlignment="Bottom" Width="100" Height="40" Click="loadButton_Click"/>
+				</Grid>
+			</TabItem>
+			<TabItem Header="Done">
+				<Grid Background="#FFE5E5E5">
+					<RichTextBox x:Name="richTextBox4" Grid.ColumnSpan="3" Margin="10,10,10,50">
+						<RichTextBox.Resources>
+							<Style TargetType="{x:Type Paragraph}">
+								<Setter Property="Margin" Value="0" />
+							</Style>
+						</RichTextBox.Resources>
+						<FlowDocument>
+							<Paragraph>
+								<Run Text="Sample Text"/>
+							</Paragraph>
+						</FlowDocument>
+					</RichTextBox>
+					<Button x:Name="buttonSave4" Content="Push" HorizontalAlignment="Left" Margin="10,0,0,5" VerticalAlignment="Bottom" Height="40" Width="100" Click="buttonSave_Click" Grid.ColumnSpan="3"/>
+					<Button x:Name="loadButton4" Content="Pull" HorizontalAlignment="Left" Margin="115,0,0,4.8" VerticalAlignment="Bottom" Width="100" Height="40" Click="loadButton_Click"/>
 				</Grid>
 			</TabItem>
 		</TabControl>

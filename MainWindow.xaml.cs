@@ -94,6 +94,7 @@ namespace todolist
 			SaveXamlPackage1("C:\\Test\\toDo.xaml");
 			SaveXamlPackage2("C:\\Test\\doingToday.xaml");
 			SaveXamlPackage3("C:\\Test\\doing.xaml");
+			SaveXamlPackage4("C:\\Test\\done.xaml");
 		}
 
 		void SaveXamlPackage1(string _fileName)
@@ -150,6 +151,24 @@ namespace todolist
 			fileStream.Dispose();
 		}
 
+		void SaveXamlPackage4(string _fileName)
+		{
+			// save done.xaml into C:\\Test\\done.xaml
+			TextRange range;
+			FileStream fStream;
+			range = new TextRange(richTextBox4.Document.ContentStart, richTextBox4.Document.ContentEnd);
+			fStream = new FileStream(_fileName, FileMode.Create);
+			range.Save(fStream, DataFormats.XamlPackage);
+			fStream.Close();
+
+			CloudFile file = sampleDir.GetFileReference("done.xaml");
+			Stream fileStream = File.OpenRead(_fileName);
+
+			// Upload file to Azure
+			file.UploadFromStream(fileStream);
+			fileStream.Dispose();
+		}
+
 		private void richTextBox3_TextChanged(object sender, TextChangedEventArgs e)
 		{
 
@@ -165,6 +184,7 @@ namespace todolist
 			LoadXamlPackage1("C:\\Test\\toDo.xaml");
 			LoadXamlPackage2("C:\\Test\\doingToday.xaml");
 			LoadXamlPackage3("C:\\Test\\doing.xaml");
+			LoadXamlPackage4("C:\\Test\\done.xaml");
 		}
 
 		void LoadXamlPackage1(string _fileName)
@@ -215,6 +235,24 @@ namespace todolist
 			if (File.Exists(_fileName))
 			{
 				range = new TextRange(richTextBox3.Document.ContentStart, richTextBox3.Document.ContentEnd);
+				fStream = new FileStream(_fileName, FileMode.OpenOrCreate);
+				range.Load(fStream, DataFormats.XamlPackage);
+				fStream.Close();
+			}
+		}
+
+		void LoadXamlPackage4(string _fileName)
+		{
+			// download done.xaml file from Azure to C:\\Test\\done.xaml
+			CloudFile file = sampleDir.GetFileReference("done.xaml");
+			file.DownloadToFile(_fileName, System.IO.FileMode.OpenOrCreate);
+
+			// load done.xaml file from C:\\Test\\done.xaml to app
+			TextRange range;
+			FileStream fStream;
+			if (File.Exists(_fileName))
+			{
+				range = new TextRange(richTextBox4.Document.ContentStart, richTextBox4.Document.ContentEnd);
 				fStream = new FileStream(_fileName, FileMode.OpenOrCreate);
 				range.Load(fStream, DataFormats.XamlPackage);
 				fStream.Close();
